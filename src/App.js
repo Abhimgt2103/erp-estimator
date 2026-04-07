@@ -126,7 +126,20 @@ const VENDOR_PROFILES={
 const MODULES=['HCM','Benefits','Talent Mgmt','Payroll','Time Tracking','Finance','Grants Mgmt','Adaptive Planning','Procure-to-Pay','Strategic Sourcing','Travel & Expense','Student Core/SIS','Recruiting','Admissions','Advising','Financial Aid','Curriculum Mgmt','Prism/DW','Extend','IAM'];
 const VCOLORS=['#F97316','#EF4444','#8B5CF6','#06B6D4','#EC4899'];
 const RCCOLORS=['#4DA8DA','#4EBF71','#E5A84B','#8B5CF6'];
-const T={bg:'#0A0D12',cd:'#12161E',bd:'#1C2230',ac:'#4DA8DA',ad:'#1A2F42',tx:'#C4CACD',dm:'#6B7280',gn:'#4EBF71',rd:'#E85454',or:'#E5A84B',wh:'#ECF0F1',sf:'#171C26'};
+const T = {
+  bg: '#F8FAFC',
+  cd: '#FFFFFF',
+  bd: '#E2E8F0',
+  ac: '#2563EB',
+  ad: '#DBEAFE',
+  tx: '#1E293B',
+  dm: '#64748B',
+  gn: '#16A34A',
+  rd: '#DC2626',
+  or: '#D97706',
+  wh: '#0F172A',
+  sf: '#F1F5F9'
+};
 const IS={background:T.sf,border:`1px solid ${T.bd}`,borderRadius:5,color:T.tx,padding:'7px 10px',fontSize:12,width:'100%',outline:'none',boxSizing:'border-box',fontFamily:"'Courier New',monospace"};
 const $=n=>(n==null?'—':n===0?'–':'$'+Math.round(n).toLocaleString());
 const P=n=>(n!=null?(n*100).toFixed(1)+'%':'');
@@ -314,7 +327,7 @@ function ReferenceSingle({rc, currentFse, currentFte}) {
           <div style={{fontSize:11,color:T.dm,marginBottom:6}}>In scope:</div>
           <div style={{display:'flex',flexWrap:'wrap',gap:4,marginBottom:10}}>
             {rc.modules.map(m=>(
-              <span key={m} style={{padding:'2px 8px',borderRadius:10,fontSize:10,background:'#1a3a1a',border:`1px solid ${T.gn}`,color:T.gn}}>{m}</span>
+              <span key={m} style={{padding:'2px 8px',borderRadius:10,fontSize:10,background:'#DCFCE7',border:`1px solid ${T.gn}`,color:T.gn}}>{m}</span>
             ))}
           </div>
           {rc.modulesExcluded.length > 0 && <>
@@ -670,7 +683,7 @@ return(
       </Section>
     </div>
     <Section title="📦 Modules In Scope">
-      <div style={{display:'flex',flexWrap:'wrap',gap:4}}>{MODULES.map(m=><button key={m} onClick={()=>setMods(ms=>({...ms,[m]:!ms[m]}))} style={{padding:'4px 10px',borderRadius:12,fontSize:10,cursor:'pointer',background:mods[m]?'#1a3a1a':'transparent',border:`1px solid ${mods[m]?T.gn:T.bd}`,color:mods[m]?T.gn:T.dm}}>{m}</button>)}</div>
+      <div style={{display:'flex',flexWrap:'wrap',gap:4}}>{MODULES.map(m=><button key={m} onClick={()=>setMods(ms=>({...ms,[m]:!ms[m]}))} style={{padding:'4px 10px',borderRadius:12,fontSize:10,cursor:'pointer',background:mods[m]? '#DBEAFE' : 'transparent',border:`1px solid ${mods[m] ? T.ac : T.bd}`,color:mods[m] ? T.ac : T.dm}}>{m}</button>)}</div>
     </Section>
     <Section title="💰 Staffing Salaries">
       <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(140px,1fr))',gap:8}}>
@@ -698,7 +711,7 @@ return(
       <input ref={fRef} type="file" accept=".xlsx,.xls,.csv" onChange={onSBFile} style={{display:'none'}}/>
       <div style={{display:'flex',gap:10,alignItems:'center'}}>
         <button onClick={()=>fRef.current?.click()} disabled={!XL} style={{padding:'8px 20px',background:T.sf,color:T.ac,border:`1px solid ${T.ac}`,borderRadius:6,cursor:'pointer',fontSize:11,fontWeight:600,fontFamily:'inherit'}}>📎 Upload Starbridge/GovSpend File</button>
-        {sbStats&&<span style={{fontSize:12,color:T.gn}}>✓ {sbStats.file} — {sbStats.rows} purchases, {sbStats.insts} institutions</span>}
+        {sbStats&&<span style={{fontSize:12,color:'#166534'}}>✓ {sbStats.file} — {sbStats.rows} purchases, {sbStats.insts} institutions</span>}
       </div>
     </Section>
     <div style={{display:'flex',gap:8,alignItems:'center',margin:'0 0 8px'}}>
